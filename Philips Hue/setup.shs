@@ -1,0 +1,56 @@
+#showscript version="1.0.0"
+
+// Define your Philips Hue Bridge connection details
+
+#define HUE_BRIDGE_IP "192.168.0.31"
+#define HUE_BRIDGE_API_KEY "iGwCuSdYgEK2Amx-neQTyLABbxEw5D9i5qyFeNoC"
+#define HUE_LIGHT_NAME "Bureau Bastiaan"
+
+// -------------------------------
+// Philips Hue integration example
+// -------------------------------
+
+// Create a connection to the Hue Bridge
+hueBridge = new Drivers.HueBridge(HUE_BRIDGE_IP, HUE_BRIDGE_API_KEY);
+
+// --- HOW TO GET AN API KEY ---
+// 1. Temporarily replace HUE_BRIDGE_API_KEY with "dummy" or any value.
+// 2. Press the physical button on the Hue Bridge (round one).
+// 3. Within 30 seconds, call: hueBridge.createApiKey();
+// 4. The new API key will be printed in the trace window.
+//hueBridge.createApiKey();
+
+// List all available lights to the trace window for reference
+hueBridge.listLights();
+
+hueLight = new hueBridge.HueLight(HUE_LIGHT_NAME);
+
+// Transition time of the light in 1/10th of a second, so a value of 10 results in a transition time of 1 sec. A value of 0 turns of transition */
+hueLight.setTransitionTime(10);
+
+// Define Hue light parameters for control (based on Philips Hue API v1.0)
+// see -> https://developers.meethue.com/develop/hue-api/lights-api/
+hueLightOn = new hueLight.HueParameter("on");
+hueLightBrightness = new hueLight.HueParameter("bri");
+hueLightSaturation = new hueLight.HueParameter("sat");
+hueLightHue = new hueLight.HueParameter("hue");
+hueLightColorTemperature = new hueLight.HueParameter("ct");
+hueLightColorMode = new hueLight.HueParameter("colormode");
+hueLightColorXy = new hueLight.HueParameter("xy");
+hueLightColorScene = new hueLight.HueParameter("scene");
+hueLightEffect = new hueLight.HueParameter("effect");
+
+// Now you can just use the parameter setpoints. example: parameter = value
+// lamp_brigthness = 128;
+
+// Quick note about the brightness ("bri") parameter:
+// In the original Philips Hue API, brightness ranges from 0–254 (with 0, NOT turning the light fully off).
+// ShowScript maps this to an extended 0–255 scale for simplicity. 
+// When you set brightness to 0, ShowScript internally sets the "on" parameter of the light to false, fully turning off the light. Where any value above 0 sets the "on" parameter to true.
+// Just remember: in ShowScript, the valid brightness range is 0–255 and automatically controls the "on" parameter.
+
+// There are also simple methods to turn light on or off
+hueLight.off();
+hueLight.on();
+
+trace("Setup finished!");

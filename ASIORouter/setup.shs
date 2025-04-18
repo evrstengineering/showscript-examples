@@ -1,0 +1,42 @@
+#showscript "1.0.0"
+
+#define REMOVE 0
+#define CREATE 1
+
+// Note: channel indexes are zero based
+
+#define INPUT_1 0
+#define INPUT_2 1
+#define INPUT_3 2
+#define INPUT_4 3
+#define INPUT_5 4
+#define INPUT_6 5
+#define INPUT_7 6
+#define INPUT_8 7
+
+#define OUTPUT_1 0
+#define OUTPUT_2 1
+#define OUTPUT_3 2
+#define OUTPUT_4 3
+#define OUTPUT_5 4
+#define OUTPUT_6 5
+#define OUTPUT_7 6
+#define OUTPUT_8 7
+
+#define VOLUME_DIM 0.25f;
+#define VOLUME_NORMAL 1.0f;
+
+// Initialize the audio router. 
+// Usage example: ASIORouter(string interfaceName, int sampleRateHz)
+audioRouter = new Drivers.ASIORouter("default", 44100);
+
+// Initialize stream for the background music
+// Usage example: ASIO(string interfaceName, int sampleRateHz, bool eqEnabled, string fileName)
+backgroundMusic = new Drivers.ASIO("default", 44100, false, "music48k.mp3");
+
+// Usage example:
+// audioRouter.route(int inputChannel, int outputChannel, int enabled)
+//
+// inputChannel = Index of the input channel on the audio interface (zero based)
+// outputChannel = Index of the output channel on the audio interface (zero based)
+// enabled = 1 to create route, 0 to remove route

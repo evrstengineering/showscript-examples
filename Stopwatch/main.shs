@@ -1,0 +1,16 @@
+#showscript "1.0.0"
+::seqStopwatchTest
+    init(20);   
+    setFps(5);
+
+    :0
+        mark("My first marker");
+
+    :10
+        mark("My second marker");
+
+    :15
+        mark("This is my final programmatically added marker. However, you can always press F9 to manually add markers in the Stopwatch window.");
+
+#realtime
+seqStopwatchTest.start();

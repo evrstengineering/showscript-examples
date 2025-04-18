@@ -1,0 +1,17 @@
+#showscript "1.0.0"
+
+// This section defines a logic block that encapsulates a sequence of actions.
+// The logic block here consists of a single frame, which allows for structured behavior.
+
+::logicblock
+    init(2) // Initialize the logic block with a single frame.
+
+:0#beginning
+    trace("Waiting for button press..");
+    pushButton.waitUntilValue(PRESSED);
+
+    trace("Waiting for button release..");
+    pushButton.waitUntilValue(RELEASED);
+
+:+1
+    ^beginning // Jump back to the beginning label to repeat the process indefinitely.

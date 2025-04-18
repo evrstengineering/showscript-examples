@@ -1,0 +1,13 @@
+#showscript version="1.0.0"
+
+#define OFF 0
+#define ON 255
+
+universe1 = new Drivers.ArtNet("192.168.2.2", 1, 40)
+lamp1_white = new universe1.DMXOutputChannel(1);
+lamp1_dimmer = new universe1.DMXOutputChannel(5);
+
+// Initializes all DMX channels with a value of 0 (turns of all devices for a default startup state)
+universe1.initAllChannels();
+
+trace("Setup finished!");

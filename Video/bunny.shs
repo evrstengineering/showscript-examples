@@ -1,0 +1,24 @@
+::bunnyShow
+    init(25);
+
+:   
+    bunnyVideo.start();
+
+:0#beginning
+    bunnyVideo.setPosition(0);
+
+:+5
+    trace("Lets freeze and show a nice still shot from the movie");
+    bunnyVideo.pause();
+    bunnyVideo.setPosition(1200);
+
+:+5
+    trace("Another one..");
+    bunnyVideo.setPosition(3000);
+    
+:+5
+    trace("Let's continue from this still..");
+    bunnyVideo.start();
+
+:+5
+    ^beginning

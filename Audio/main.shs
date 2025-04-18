@@ -1,0 +1,10 @@
+#showscript "1.0.0"
+#include "setup.shs"
+
+#include "dingdong.shs"
+
+music.start();
+trace("Majestic music has entered the room....")
+
+// Lets fire up our ding dong sequence for an extra majestic spark!
+dingdong.start();

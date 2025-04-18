@@ -1,0 +1,5 @@
+#showscript "1.0.0"
+
+// Here is where the hardware setup is usually done, including the initialization of interfaces and the
+// configuration of inputs and outputs.
+

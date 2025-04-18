@@ -1,0 +1,15 @@
+::flicker
+	init(3);
+    setFps(5);
+    
+    :
+    	hueLightBrightness = 255;
+
+    :0#start
+    	hueLightBrightness = 255;
+
+    :1
+    	hueLightBrightness = 0;
+        
+    :2
+        ^start

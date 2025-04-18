@@ -1,0 +1,33 @@
+#showscript version="1.0.0"
+
+#include "setup.shs"
+
+::blink
+	init(3);
+
+// Our initializator frame
+:
+	lamp1_dimmer = ON;
+	lamp1_white = 0;
+	trace("Lamp initialized..");
+
+:0#start
+	lamp1_white = ON;
+	trace("Lamp ON");
+
+:1
+	lamp1_white = OFF;
+	trace("Lamp OFF");
+	
+:+1
+	^start
+
+// Our deinitializator frame
+:~
+	lamp1_white = OFF;
+	lamp1_dimmer = OFF;
+	trace("Lamp deinitialized..");
+
+// We are done defining our sequence, lets escape back to realtime mode
+#realtime
+blink.start(); // Execute our blinking sequence

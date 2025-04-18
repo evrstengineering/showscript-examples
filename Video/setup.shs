@@ -1,0 +1,15 @@
+#showscript "1.0.0"
+
+// The second parameter in the Video driver constructor represents the display index:
+// (0 = primary monitor, 1 = secondary monitor, 2 = third monitor, etc.)
+// Ensure you have the specified monitor connected; otherwise, the script may not run.
+
+bunnyVideo = new Drivers.Video("BigBuckBunny.mp4", 0);  // Displays video on the primary monitor
+globeVideo = new Drivers.Video("Globe.mp4", 1);         // Displays video on the secondary monitor
+
+// Additional useful options:
+// bunnyVideo.listAudioDevices();      // Lists available audio output devices
+// bunnyVideo.setAudioOutput("...");   // Sets audio output to the specified device
+// bunnyVideo.setRepeatEnabled(1);     // Enables looping (1 = on, 0 = off)
+// bunnyVideo.setPosition(1000);       // Jump to frame X
+// bunnyVideo.setVolume(25);           // Sets volume (0 = muted, 100 = max)

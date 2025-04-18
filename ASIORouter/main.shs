@@ -1,0 +1,6 @@
+#showscript "1.0.0"
+#include "setup.shs"
+#include "switchingtest.shs"
+
+//backgroundMusic.start();
+switchingtest.start();

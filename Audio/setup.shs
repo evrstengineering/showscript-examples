@@ -1,0 +1,42 @@
+#showscript "1.0.0"
+
+// Audio Driver Selection
+// Choose your preferred audio driver for playback (depending on what your interface supports).
+//
+// WASAPI = Windows Audio Session API
+// ASIO = Audio Stream Input Output (preferred)
+//
+//
+// ConstructorL Drivers.WASAPI(string audioDeviceName, int sampleRate, bool eqEnabled, string fileName)
+//
+// Usage examples: Drivers.WASAPI("default", 44100, false, "fileName") or Drivers.ASIO("default", 44100, false, "fileName").
+//
+// Notes: 
+// - Place audio files in the same directory as this script, or provide an absolute path.
+// - Audio files must have the same sample rate as the one used to initialize the audio interface. Typically 44100 or 48000 Hz.
+// - You can create as many independent audio streams as needed.
+// - To play multiple streams simultaneously with ASIO, the audio interface driver must support "multiclient ASIO".
+// - Disable EQ for better performance.
+
+#define LEFT -1f
+#define RIGHT 1f
+
+highBellSound = new Drivers.WASAPI("default", 48000, false, "highbell.mp3");
+highBellSound.setPanning(LEFT);
+
+lowBellSound = new Drivers.WASAPI("default", 48000, false, "lowbell.mp3");
+lowBellSound.setPanning(RIGHT);
+
+music = new Drivers.WASAPI("default", 48000, false, "music.mp3");
+
+// Routing
+// When using ASIO you can route the audio to different outputs.
+//music.setChannelOffset(0)
+
+// Equalizer, when the EQ is enabled (third argument of constructor), the audio will be processed by a 4-band equalizer. Gain range -30,0f to _30.0f, where 0 is flat. Usage example:
+//
+//eqmusic = new Drivers.WASAPI("default", 44100, true, "test.mp3");
+//eqmusic.setEqLow(5.0f);
+//eqmusic.setEqLowMid(0.0f);
+//eqmusic.setEqHighMid(0.0f);
+//eqmusic.setEqHigh(-2.0f);

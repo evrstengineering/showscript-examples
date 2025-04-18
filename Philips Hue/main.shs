@@ -1,0 +1,8 @@
+#showscript version="1.0.0"
+
+#include "setup.shs"
+#include "seq-colorcycle.shs"
+#include "seq-flicker.shs"
+
+colorCycle.start();
+flicker.start();

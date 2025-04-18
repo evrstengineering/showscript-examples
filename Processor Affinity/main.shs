@@ -1,0 +1,33 @@
+#showscript "1.0.0"
+#include "setup.shs"
+
+# This script demonstrates assigning sequences to specific logical CPU cores.
+
+::someProcess
+    init(3);
+
+:0#start
+    trace("Just")
+
+:1
+    trace("doing something ..")
+
+:+1
+    ^start
+
+#realtime
+
+// processorAffinity bitmask:
+//   0b0000000
+//     |||||||-> 7th logical core
+//     ||||||-> 6th logical core
+//     |||||-> 5th logical core
+//     ||||-> 4th logical core
+//     |||-> 3rd logical core
+//     ||-> 2nd logical core
+//     |-> 1st logical core
+//
+//    if you have more logical cores, just add more bits
+
+someProcess.setProcessorAffinity(0b0110000); // Assigns this process to cores 2 and 3
+someProcess.start(); // Executes the sequence

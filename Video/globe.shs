@@ -1,0 +1,6 @@
+::globeShow
+    init(1);
+
+:   
+    globeVideo.start();
+    globeVideo.setRepeatEnabled(1);

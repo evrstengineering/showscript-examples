@@ -1,0 +1,14 @@
+::dingdong
+	init(3); // Initialize the sequence with a duration of 2 frames.
+	setFps(1); // One frames per second
+
+:0#begin
+	highBellSound.restart();
+	trace("Ding!")
+
+:1
+	lowBellSound.restart();
+	trace("Dong!")
+
+:+1
+	^begin

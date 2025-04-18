@@ -1,0 +1,19 @@
+::colorCycle
+	init(81);
+    setFps(10);
+
+    :
+        hueLight.on();
+        hueLightBrightness = 255;
+
+    :0#start
+        hueLightHue.fadeToValueOverFrames(65535, 40, InterpolationMode.Linear);
+
+    :40
+        hueLightHue.fadeToValueOverFrames(0, 40, InterpolationMode.Linear);
+        
+    :80
+        ^start
+
+    :~
+        hueLight.off();

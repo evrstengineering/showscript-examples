@@ -1,0 +1,13 @@
+#showscript "1.0.0"
+
+#define PRESSED 1
+#define RELEASED 0
+
+// Usage
+// new Drivers.X408I(string IP, int port, int pollFrequencyInHz)
+ioModule = new Drivers.X408I("192.168.0.185", 80, 10);
+
+// Usage
+// new DigitalInput(int inputIndex)
+pushButton = new ioModule.DigitalInput(0);
+

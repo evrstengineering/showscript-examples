@@ -1,0 +1,12 @@
+#showscript "1.0.0"
+
+// This example demonstrates playing video on 2 monitors.
+
+// Includes necessary setup and media scripts
+#include "setup.shs"  // Contains initial setup configurations and dependencies
+#include "bunny.shs"  // Loads settings and resources for the "bunny" media display
+#include "globe.shs"  // Loads settings and resources for the "globe" media display
+
+// Start the media displays on their designated screens
+bunnyShow.start();   // Begins playback of the bunny sequence (on the primary monitor)
+globeShow.start();   // Begins playback of the globe sequence (on the secondary monitor)

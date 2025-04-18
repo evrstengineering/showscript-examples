@@ -1,0 +1,19 @@
+#showscript "1.0.0"
+
+// This script demonstrates initializing an API to expose variables for external interaction.
+// Variables can be updated dynamically at any point in the code, allowing external devices 
+// or applications to monitor and interact with your script in real time.
+
+// Initialize an HTTP API on port 8080 to enable external access
+myApi = new Drivers.API(8080);
+
+// Define interactive variables to be exposed via the API
+foo = new var();
+bar = new var();
+
+// Set initial values for the variables
+foo = 1;
+bar = 2;
+
+// Write a nice message to our trace window
+trace("API Running! Access and monitor variables at http://localhost:8080/variables");
