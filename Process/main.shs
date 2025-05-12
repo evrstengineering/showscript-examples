@@ -1,0 +1,5 @@
+#showscript "1.0.0"
+#include "setup.shs"
+
+// This is the main script and serves as the entry point.
+

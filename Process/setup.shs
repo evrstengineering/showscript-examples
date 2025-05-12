@@ -1,0 +1,17 @@
+#showscript "1.0.0"
+
+// Example: Using the Process driver in ShowScript
+// The Process driver is used to start and stop external executables.
+// This is useful for triggering external processes like scripts, tools, or services.
+
+// Syntax:
+//   New Drivers.Process(string executablePath, string arguments)
+
+// Create a Process driver instance pointing to the desired executable
+process = new Drivers.Process("C:\path\to\my\executable.exe", "-some -example -arguments");
+
+// Start the external process
+process.start();
+
+// Optionally, stop the process when needed
+// process.stop();

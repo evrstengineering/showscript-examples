@@ -1,29 +1,30 @@
 // Lets create a testing sequences that switches the microphone signal on/off each second.
+
 ::switchingtest
-init(3);
-setFps(1);
+	init(3);
+	setFps(1);
 
-:
-// Use the initializer to start the background music at the very beginning of our sequence
-backgroundMusic.start();
+	:
+	// Use the initializer to start the background music at the very beginning of our sequence
+	backgroundMusic.start();
 
-:0#begin
-// Route the signal of microphone at input 1 (mono) to output 1 & 2 (stereo)
-audioRouter.setRoute(INPUT_1, OUTPUT_1, CREATE);
-audioRouter.setRoute(INPUT_1, OUTPUT_2, CREATE);
-backgroundMusic.setVolume(VOLUME_DIM);
-trace("Microphone turned on & music dimmed");
+	:0#begin
+		// Route the signal of microphone at input 1 (mono) to output 1 & 2 (stereo)
+		audioRouter.setRoute(INPUT_1, OUTPUT_1, CREATE);
+		audioRouter.setRoute(INPUT_1, OUTPUT_2, CREATE);
+		backgroundMusic.setVolume(VOLUME_DIM);
+		trace("Microphone turned on & music dimmed");
 
-:+1
-audioRouter.setRoute(INPUT_1, OUTPUT_1, REMOVE);
-audioRouter.setRoute(INPUT_1, OUTPUT_2, REMOVE);
-backgroundMusic.setVolume(VOLUME_NORMAL);
-trace("Microphone turned off & music full on");
+	:+1
+		audioRouter.setRoute(INPUT_1, OUTPUT_1, REMOVE);
+		audioRouter.setRoute(INPUT_1, OUTPUT_2, REMOVE);
+		backgroundMusic.setVolume(VOLUME_NORMAL);
+		trace("Microphone turned off & music full on");
 
-:+1
-// Jump to beginning of sequence to create an infinite loop
-^begin
+	:+1
+		// Jump to beginning of sequence to create an infinite loop
+		^begin
 
-:~
-// User deinitializer to clean up / stop the background music for whenever stops
-backgroundMusic.stop();
+	:~
+		// User deinitializer to clean up / stop the background music for whenever stops
+		backgroundMusic.stop();

@@ -32,10 +32,10 @@ audioRouter = new Drivers.ASIORouter("default", 44100);
 
 // Initialize stream for the background music
 // Usage example: ASIO(string interfaceName, int sampleRateHz, bool eqEnabled, string fileName)
-backgroundMusic = new Drivers.ASIO("default", 44100, false, "music48k.mp3");
+backgroundMusic = new Drivers.ASIO("default", 44100, false, "music.mp3");
 
 // Usage example:
-// audioRouter.route(int inputChannel, int outputChannel, int enabled)
+// audioRouter.setRoute(int inputChannel, int outputChannel, int enabled)
 //
 // inputChannel = Index of the input channel on the audio interface (zero based)
 // outputChannel = Index of the output channel on the audio interface (zero based)
